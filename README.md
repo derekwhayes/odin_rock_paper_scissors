@@ -1,1 +1,3 @@
-# odin_rock_paper_scissors
+# Rock, Paper, Scissors
+
+####For The Odin Project. JavaScript practice.
