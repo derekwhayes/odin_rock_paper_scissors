@@ -47,7 +47,7 @@
                         switch (computerChoice) {
                             case "rock":
                                 console.log("Paper v Rock: YOU WIN!!!");
-                                humanChoice++;
+                                humanScore++;
                                 break;
                             case "paper":
                                 console.log("Paper v Paper: TIE");
@@ -86,10 +86,13 @@
             console.log(`Final Score => Computer: ${computerScore} / You: ${humanScore}`);
 
             if (computerScore > humanScore) {
-                console.log("Sorry! AI is coming for you!");
+                console.log("\nSorry! AI is coming for you!");
+            }
+            else if (humanScore > computerScore) {
+                console.log("\nYay! The human race shall overcome!");
             }
             else {
-                console.log("Yay! The human race shall overcome!");
+                console.log("\nThe fight continues!");
             }
         }
 
