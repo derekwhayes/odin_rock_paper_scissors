@@ -1,15 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock/Paper/Scissors</title>
 </head>
+
 <body>
-    
+
     <script>
-        console.log("Hello world!")
+
+        const weapons = ["rock", "paper", "scissors"];
+
+        function getComputerChoice() {
+            return weapons[Math.floor(Math.random() * 3)];
+        }
+
+        function getHumanChoice() {
+            const choice = window.prompt("Choose your weapon!");
+            return choice.toLowerCase().trim();
+        }
+
+        function playGame() {
+            let humanScore = 0;
+            let computerScore = 0;
+
+            function playRound(humanChoice, computerChoice) {
+                switch (humanChoice) {
+                    case "rock":
+                        switch (computerChocie) {
+                            case "rock":
+                                console.log("Rock v Rock: TIE");
+                                break;
+                            case "paper":
+                                console.log("Rock v Paper: YOU LOSE...");
+                                computerScore++;
+                                break;
+                            case "scissors":
+                                console.log("Rock v Scissors: YOU WIN!");
+                                humanScore++;
+                                break;
+                        }
+                        break;
+                    case "paper":
+                        switch (computerChocie) {
+                            case "rock":
+                                console.log("Paper v Rock: YOU WIN!!!");
+                                humanChoice++;
+                                break;
+                            case "paper":
+                                console.log("Paper v Paper: TIE");
+                                break;
+                            case "scissors":
+                                console.log("Paper v Scissors: YOU LOSE...");
+                                computerScore++;
+                                break;
+                        }
+                        break;
+                    case "scissors":
+                        switch (computerChocie) {
+                            case "rock":
+                                console.log("Scissors v Rock: YOU LOSE...");
+                                computerScore++;
+                                break;
+                            case "paper":
+                                console.log("Scissors v Paper: YOU WIN!");
+                                humanScore++;
+                                break;
+                            case "scissors":
+                                console.log("Scissors v Scissors: TIE");
+                                break;
+                        }
+                        break;
+                    
+                }
+            }
+
+            for (let i = 0; i < 5; i++) {
+                playRound(getHumanChoice(), getComputerChoice());
+            }
+
+            console.log(`Final Score => Computer: ${computerScore} / You: ${humanScore}`);
+
+            if (computerScore > humanScore) {
+                console.log("Sorry! AI is coming for you!");
+            }
+            else {
+                console.log("Yay! The human race shall overcome!");
+            }
+        }
     </script>
 
 </body>
+
 </html>
