@@ -29,7 +29,7 @@
             function playRound(humanChoice, computerChoice) {
                 switch (humanChoice) {
                     case "rock":
-                        switch (computerChocie) {
+                        switch (computerChoice) {
                             case "rock":
                                 console.log("Rock v Rock: TIE");
                                 break;
@@ -44,7 +44,7 @@
                         }
                         break;
                     case "paper":
-                        switch (computerChocie) {
+                        switch (computerChoice) {
                             case "rock":
                                 console.log("Paper v Rock: YOU WIN!!!");
                                 humanChoice++;
@@ -59,7 +59,7 @@
                         }
                         break;
                     case "scissors":
-                        switch (computerChocie) {
+                        switch (computerChoice) {
                             case "rock":
                                 console.log("Scissors v Rock: YOU LOSE...");
                                 computerScore++;
@@ -78,6 +78,8 @@
             }
 
             for (let i = 0; i < 5; i++) {
+                console.log(`\nCurrent Score => Computer: ${computerScore} / You: ${humanScore}\n`);
+
                 playRound(getHumanChoice(), getComputerChoice());
             }
 
@@ -90,6 +92,8 @@
                 console.log("Yay! The human race shall overcome!");
             }
         }
+
+        playGame();
     </script>
 
 </body>
