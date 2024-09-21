@@ -18,14 +18,14 @@ function playGame() {
             case "rock":
                 switch (computerChoice) {
                     case "rock":
-                        console.log("Rock v Rock: TIE");
+                        roundResult.textContent = "Rock v Rock: TIE";
                         break;
                     case "paper":
-                        console.log("Rock v Paper: YOU LOSE...");
+                        roundResult.textContent = "Rock v Paper: YOU LOSE...";
                         computerScore++;
                         break;
                     case "scissors":
-                        console.log("Rock v Scissors: YOU WIN!");
+                        roundResult.textContent = "Rock v Scissors: YOU WIN!";
                         humanScore++;
                         break;
                 }
@@ -33,14 +33,14 @@ function playGame() {
             case "paper":
                 switch (computerChoice) {
                     case "rock":
-                        console.log("Paper v Rock: YOU WIN!!!");
+                        roundResult.textContent = "Paper v Rock: YOU WIN!!!";
                         humanScore++;
                         break;
                     case "paper":
-                        console.log("Paper v Paper: TIE");
+                        roundResult.textContent = "Paper v Paper: TIE";
                         break;
                     case "scissors":
-                        console.log("Paper v Scissors: YOU LOSE...");
+                        roundResult.textContent = "Paper v Scissors: YOU LOSE...";
                         computerScore++;
                         break;
                 }
@@ -48,15 +48,15 @@ function playGame() {
             case "scissors":
                 switch (computerChoice) {
                     case "rock":
-                        console.log("Scissors v Rock: YOU LOSE...");
+                        roundResult.textContent = "Scissors v Rock: YOU LOSE...";
                         computerScore++;
                         break;
                     case "paper":
-                        console.log("Scissors v Paper: YOU WIN!");
+                        roundResult.textContent = "Scissors v Paper: YOU WIN!";
                         humanScore++;
                         break;
                     case "scissors":
-                        console.log("Scissors v Scissors: TIE");
+                        roundResult.textContent = "Scissors v Scissors: TIE";
                         break;
                 }
                 break;
@@ -65,12 +65,13 @@ function playGame() {
     }
 
     // for (let i = 0; i < 5; i++) {
-        console.log(`\nCurrent Score => Computer: ${computerScore} / You: ${humanScore}\n`);
+        
 
         // playRound(getHumanChoice(), getComputerChoice());
     // }
 
     const bodyElement = document.querySelector("body");
+    const roundResult = document.querySelector("#round-result");
     bodyElement.addEventListener("click", (e) => {
         switch(e.target.id) {
             case 'rock':
@@ -81,19 +82,28 @@ function playGame() {
                 break;
             case 'scissors':
                 playRound('scissors', getComputerChoice());
+            
         }
-    })
+        currentScore.textContent = `Current Score => Computer: ${computerScore} / You: ${humanScore}`;
+    });
 
-    console.log(`Final Score => Computer: ${computerScore} / You: ${humanScore}`);
+    const currentScore = document.querySelector("#current-score");
+    const finalScore = document.querySelector("#final-score");
+    const outcomeText = document.querySelector("#outcome-text");
+
+    currentScore.textContent = `Current Score => Computer: ${computerScore} / You: ${humanScore}`;
 
     if (computerScore > humanScore) {
-        console.log("\nSorry! AI is coming for you!");
+        finalScore.textContent = `Final Score => Computer: ${computerScore} / You: ${humanScore}`;
+        outcomeText.textContent = "Sorry! AI is coming for you!";
     }
     else if (humanScore > computerScore) {
-        console.log("\nYay! The human race shall overcome!");
+        finalScore.textContent = `Final Score => Computer: ${computerScore} / You: ${humanScore}`;
+        outcomeText.textContent = "Yay! The human race shall overcome!";
     }
     else {
-        console.log("\nThe fight continues!");
+        finalScore.textContent = `Final Score => Computer: ${computerScore} / You: ${humanScore}`;
+        outcomeText.textContent = "The fight continues!";
     }
 }
 
