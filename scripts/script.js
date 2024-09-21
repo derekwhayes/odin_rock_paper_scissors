@@ -12,6 +12,7 @@ function getComputerChoice() {
 function playGame() {
     let humanScore = 0;
     let computerScore = 0;
+    let roundsPlayed = 0;
 
     function playRound(humanChoice, computerChoice) {
         switch (humanChoice) {
@@ -62,18 +63,20 @@ function playGame() {
                 break;
 
         }
+        roundsPlayed++;
+        if (roundsPlayed == 5) gameOver();
     }
 
     // for (let i = 0; i < 5; i++) {
-        
 
-        // playRound(getHumanChoice(), getComputerChoice());
+
+    // playRound(getHumanChoice(), getComputerChoice());
     // }
 
     const bodyElement = document.querySelector("body");
     const roundResult = document.querySelector("#round-result");
     bodyElement.addEventListener("click", (e) => {
-        switch(e.target.id) {
+        switch (e.target.id) {
             case 'rock':
                 playRound('rock', getComputerChoice());
                 break;
@@ -82,28 +85,32 @@ function playGame() {
                 break;
             case 'scissors':
                 playRound('scissors', getComputerChoice());
-            
+
         }
         currentScore.textContent = `Current Score => Computer: ${computerScore} / You: ${humanScore}`;
     });
 
     const currentScore = document.querySelector("#current-score");
-    const finalScore = document.querySelector("#final-score");
-    const outcomeText = document.querySelector("#outcome-text");
+    
 
     currentScore.textContent = `Current Score => Computer: ${computerScore} / You: ${humanScore}`;
 
-    if (computerScore > humanScore) {
-        finalScore.textContent = `Final Score => Computer: ${computerScore} / You: ${humanScore}`;
-        outcomeText.textContent = "Sorry! AI is coming for you!";
-    }
-    else if (humanScore > computerScore) {
-        finalScore.textContent = `Final Score => Computer: ${computerScore} / You: ${humanScore}`;
-        outcomeText.textContent = "Yay! The human race shall overcome!";
-    }
-    else {
-        finalScore.textContent = `Final Score => Computer: ${computerScore} / You: ${humanScore}`;
-        outcomeText.textContent = "The fight continues!";
+    function gameOver() {
+        const finalScore = document.querySelector("#final-score");
+        const outcomeText = document.querySelector("#outcome-text");
+
+        if (computerScore > humanScore) {
+            finalScore.textContent = `Final Score => Computer: ${computerScore} / You: ${humanScore}`;
+            outcomeText.textContent = "Sorry! AI is coming for you!";
+        }
+        else if (humanScore > computerScore) {
+            finalScore.textContent = `Final Score => Computer: ${computerScore} / You: ${humanScore}`;
+            outcomeText.textContent = "Yay! The human race shall overcome!";
+        }
+        else {
+            finalScore.textContent = `Final Score => Computer: ${computerScore} / You: ${humanScore}`;
+            outcomeText.textContent = "The fight continues!";
+        }
     }
 }
 
