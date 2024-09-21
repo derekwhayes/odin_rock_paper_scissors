@@ -4,10 +4,10 @@ function getComputerChoice() {
     return weapons[Math.floor(Math.random() * 3)];
 }
 
-function getHumanChoice() {
-    const choice = window.prompt("Choose your weapon!");
-    return choice.toLowerCase().trim();
-}
+// function getHumanChoice() {
+//     const choice = window.prompt("Choose your weapon!");
+//     return choice.toLowerCase().trim();
+// }
 
 function playGame() {
     let humanScore = 0;
@@ -67,8 +67,22 @@ function playGame() {
     // for (let i = 0; i < 5; i++) {
         console.log(`\nCurrent Score => Computer: ${computerScore} / You: ${humanScore}\n`);
 
-        playRound(getHumanChoice(), getComputerChoice());
+        // playRound(getHumanChoice(), getComputerChoice());
     // }
+
+    const bodyElement = document.querySelector("body");
+    bodyElement.addEventListener("click", (e) => {
+        switch(e.target.id) {
+            case 'rock':
+                playRound('rock', getComputerChoice());
+                break;
+            case 'paper':
+                playRound('paper', getComputerChoice());
+                break;
+            case 'scissors':
+                playRound('scissors', getComputerChoice());
+        }
+    })
 
     console.log(`Final Score => Computer: ${computerScore} / You: ${humanScore}`);
 
