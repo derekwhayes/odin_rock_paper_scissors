@@ -64,11 +64,11 @@ function playGame() {
         }
     }
 
-    for (let i = 0; i < 5; i++) {
+    // for (let i = 0; i < 5; i++) {
         console.log(`\nCurrent Score => Computer: ${computerScore} / You: ${humanScore}\n`);
 
         playRound(getHumanChoice(), getComputerChoice());
-    }
+    // }
 
     console.log(`Final Score => Computer: ${computerScore} / You: ${humanScore}`);
 
